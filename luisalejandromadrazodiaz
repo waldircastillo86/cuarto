@@ -9,7 +9,7 @@ double square(double num) {
 int main() {
     double number;
     
-    std::cout << "Introduce un número: ";            //MADRAZO LE GUSTA FERNANDA
+    std::cout << "Introduce un número: ";            
     std::cin >> number;                                                                 
     
     // Calculamos el cuadrado del número
