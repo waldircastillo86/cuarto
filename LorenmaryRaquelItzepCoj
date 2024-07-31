@@ -8,3 +8,4 @@ cout<<"la suma de ambas posiciones es: "; //muestra el mensaje ¨la suma de amba
 cout<<array[1] + array [5]; //imprime la suma de los elementos en las posiciones 1 y 5 del arreglo
 return 0;//termina el programa
 }
+hola loren como estas uwu 
