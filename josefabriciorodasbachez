@@ -1,6 +1,1 @@
-#include <iostream>
-
-int main() {
-    std::cout << "Hola, soy jose !" << std::endl;
-    return 0;
-}
+pollo frito con papas y besos de dardon
