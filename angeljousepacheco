@@ -1,0 +1,16 @@
+#include <iostream>
+#include <cstdlib> // Biblioteca para generar números aleatorios
+#include <ctime>   // Biblioteca para obtener la hora actual
+
+int main() {
+    // Generamos una semilla para la generación de números aleatorios
+    std::srand(std::time(0));
+
+    // Generamos un número aleatorio entre 1 y 100
+    int numeroAleatorio = std::rand() % 100 + 1;
+
+    // Mostramos el número aleatorio en pantalla
+    std::cout << "Número aleatorio: " << numeroAleatorio << std::endl;
+
+    return 0;
+}
