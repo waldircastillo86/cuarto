@@ -1,51 +1,87 @@
-/* BUSQUEDA EN ARREGLO
- 
-* Hay un arreglo de 10 numeros
-* El usuario ingresara un numero y el programa buscara si
-    existe en el arreglo
-* Si el numero existe, mostrar valor y posicion.
-* Si no, mostrar mensaje.
-* Continuar programa hasta que el usuario ingrese -1
- 
-https://ccodigo.wordpress.com/
-*/
- 
 #include <iostream>
+#include <vector>
+
 using namespace std;
- 
-int main()
-{
-    const int arrayLen = 10;
-    int searchArray[arrayLen] = {324,457,6789,541345,7,6,8965,12,32,4815};
-     
-    //searchKey es el numero que ingresa el usuario
-    //location es la posicion
-    int searchKey, location;
-     
-    while(1) {
-        cout << "\nIngresa un numero: ";
-        cin >> searchKey;
-         
-        //checar condicion para terminar programa
-        if(searchKey == -1) break;
-         
-        //busqueda        
-        for(int i=0; i<arrayLen; i++) {
-            if(searchArray[i] == searchKey) {
-                location = i;
-                break;
-            }
-            location = -1;
+
+// Función para combinar dos subarreglos ordenados
+void merge(vector<int>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    // Crear arreglos temporales
+    vector<int> L(n1), R(n2);
+
+    // Copiar datos a los arreglos temporales L[] y R[]
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    // Combinar los arreglos temporales de vuelta en arr[]
+    int i = 0; // Índice inicial de primer subarreglo
+    int j = 0; // Índice inicial de segundo subarreglo
+    int k = left; // Índice inicial del arreglo combinado
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
         }
-     
-        //si location == -1 entonces el numero no se encontro en el arreglo
-        if(location != -1) {
-            cout << searchKey << " esta en la posicion [" << location << "] del arreglo.\n";
-        }
-        else {
-            cout << searchKey << " no existe en el arreglo.\n";
-        }
+        k++;
     }
-         
+
+    // Copiar los elementos restantes de L[], si hay alguno
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copiar los elementos restantes de R[], si hay alguno
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+// Función recursiva para ordenar el subarreglo
+void mergeSort(vector<int>& arr, int left, int right) {
+    if (left < right) {
+        // Encuentra el punto medio
+        int mid = left + (right - left) / 2;
+
+        // Ordena la primera y segunda mitad
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+
+        // Combina las mitades ordenadas
+        merge(arr, left, mid, right);
+    }
+}
+
+// Función para imprimir el arreglo
+void printArray(const vector<int>& arr) {
+    int n = arr.size();
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << "\n";
+}
+
+// Función principal
+int main() {
+    vector<int> arr = {12, 11, 13, 5, 6, 7};
+    int n = arr.size();
+
+    cout << "Arreglo original:\n";
+    printArray(arr);
+
+    mergeSort(arr, 0, n - 1);
+
+    cout << "Arreglo ordenado:\n";
+    printArray(arr);
+
     return 0;
 }
