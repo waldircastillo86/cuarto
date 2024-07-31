@@ -20,7 +20,7 @@ int main () {
     cout<<"julio" <<endl;
      }else if (mes==8) {
     cout<<"agosto" <<endl;
-     }else if (mes==9) {
+     }else if (mes==9) {                           
     cout<<"septiembre" <<endl;
      }else if (mes==10) {
     cout<<"octubre" <<endl;
@@ -32,4 +32,4 @@ int main () {
     cout<<"numero de mes invalido"<<endl;
     }
     return 0;
-}
+}      MERCY ES LA MEJOR :)
