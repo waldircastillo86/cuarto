@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int first_number, second_number, sum;
+    cout << "Ingresa dos números enteros: ";
+    cin >> first_number >> second_number;
+
+    // Suma los dos números y almacena el resultado en la variable 'sum'
+    sum = first_number + second_number;
+
+    // Imprime el resultado
+    cout << first_number << " + " << second_number << " = " << sum;
+
+    return 0;
+}
